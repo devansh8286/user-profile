@@ -21,12 +21,14 @@ public class UserController {
 	@Autowired
 	private UserService userservice;
 
-	@RequestMapping("/url")
-	@ResponseBody
-	public String name() {
+//	@RequestMapping("/url")
+//	@ResponseBody
+//	public String name() {
+//
+//		return "Hello World";
+//	}
 
-		return "Hello World";
-	}
+//	create user
 
 	@RequestMapping("/create")
 	@Transactional
@@ -39,6 +41,8 @@ public class UserController {
 		return "user created sucessfully";
 	}
 
+	// display all user
+
 	@RequestMapping("/displayall")
 	public Iterable<User> fetchall(User User) {
 
@@ -46,12 +50,21 @@ public class UserController {
 
 	}
 
+//	delete user by user name
+
 	@RequestMapping("/deleteuser/{username}")
 	@Transactional
 	public Iterable<User> deleteUser(@PathVariable String username) {
 
 		return this.userservice.deleteUserByUsername(username);
+	}
 
+//get single user details  	
+
+	@RequestMapping("/finduser/{username}")
+	public User findUser(@PathVariable String username) {
+
+		return this.userservice.getUserByUsername(username);
 	}
 
 }
