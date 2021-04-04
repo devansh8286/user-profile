@@ -59,7 +59,7 @@ public class UserController {
 		return this.userservice.deleteUserByUsername(username);
 	}
 
-//get single user details  	
+//get single user details
 
 	@RequestMapping("/finduser/{username}")
 	public User findUser(@PathVariable String username) {
